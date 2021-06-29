@@ -1,5 +1,5 @@
 // Copyright 2014 Citra Emulator Project
-// Licensed under GPLv2 or any later version
+// Licensed under GPLv2 or any later versions
 // Refer to the license.txt file included.
 
 #include <algorithm>

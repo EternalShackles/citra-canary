@@ -104,7 +104,7 @@ struct ConsoleCountryInfo {
 static_assert(sizeof(ConsoleCountryInfo) == 4, "ConsoleCountryInfo must be exactly 4 bytes");
 } // namespace
 
-constexpr EULAVersion MAX_EULA_VERSION{0x7F, 0x7F};
+constexpr EULAVersion MAX_EULA_VERSION{0x00, 0x00};
 constexpr ConsoleModelInfo CONSOLE_MODEL_OLD{NINTENDO_3DS_XL, {0, 0, 0}};
 constexpr ConsoleModelInfo CONSOLE_MODEL_NEW{NEW_NINTENDO_3DS_XL, {0, 0, 0}};
 constexpr u8 CONSOLE_LANGUAGE = LANGUAGE_EN;
@@ -533,7 +533,7 @@ ResultCode Module::FormatConfig() {
 
     // 0x000D0000 - Accepted EULA version
     u32_le data = MAX_EULA_VERSION.minor + (MAX_EULA_VERSION.major << 8);
-    res = CreateConfigInfoBlk(EULAVersionBlockID, sizeof(data), 0xE, &data);
+    res = CreateConfigInfoBlk(EULAVersionBlockID, sizeof(MAX_EULA_VERSION), 0xE, &zero_buffer);
     if (!res.IsSuccess())
         return res;
 
